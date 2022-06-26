@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+/* Coded by Younès Elab @ Palmthree Studio, please don't reuse this code without my express permission */
+
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+@import 'swiper/scss/autoplay';
+@import 'swiper/scss/effect-fade';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Color scheme */
+
+$globalBg: #f6f1eb;
+$sectionBg: #fffcf7;
+$primary: #444444;
+$secondary: #696969;
+
+/* Custom fonts */
+
+@font-face {
+    font-family: Orator;
+    src: url(assets/fonts/Orator.woff);
+}
+
+@font-face {
+    font-family: 'Courier New', Courier, monospace;
+    src: url(assets/fonts/Courier-New.woff);
+}
+
+@font-face {
+    font-family: Helvetica, Arial, sans-serif;
+    src: url(assets/fonts/Helvetica.woff);
+}
+
+.orator {
+    font-family: Orator;
+}
+
+.courier {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.helvetica {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Custom CSS */
+
+body {
+    background-color: $globalBg;
+    color: $primary;
+}
+
+section {
+    background-color: $sectionBg;
+}
+
+.primary-bg {
+    background-color: $primary;
+}
+
+.global-bg {
+    background-color: $globalBg;
+}

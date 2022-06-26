@@ -1,0 +1,18 @@
+<section class="container mx-auto px-4 text-center h-[80vh] my-4 bg-transparent" *ngIf="isActive"> 
+    <div class="grid grid-cols-3 gap-4 h-full place-items-center">
+        <div class="h-full w-full bg-black bg-cover bg-center" [ngStyle]="{'background-image': 'url(' + questions[currentQuestion].url + ')'}"></div>
+        <div class="col-span-2">
+            <section class="p-16 mb-8">
+                <h1 class="orator text-3xl mb-4">Question {{questions[currentQuestion].number}}/5</h1>
+                <p class="courrier text-xl">{{questions[currentQuestion].title}}</p>
+            </section>
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <section [ngClass]="{'opacity-50 shadow-none':answer.isChosen == false, 'shadow-lg':answer.isChosen}" (click)="chooseAnswer(i)" *ngFor="let answer of questions[currentQuestion].propositions; let i = index" class="w-full p-8 cursor-pointer hover:shadow-lg transition duration-300 ease-in-out">
+                    <p class="courrier text-4xl">{{answer.text}}</p>
+                </section>
+            </div>
+            <button class="px-32 py-4 courier rounded-md primary-bg text-white text-sm font-semibold mt-2" (click)="confirmAnswer()" *ngIf="currentQuestion < 4">Suivant</button>
+            <button class="px-32 py-4 courier rounded-md primary-bg text-white text-sm font-semibold mt-2" (click)="confirmAnswer();getResults()" *ngIf="currentQuestion == 4">Voir mon score</button>
+        </div>
+    </div>
+</section>

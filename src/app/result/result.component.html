@@ -1,0 +1,7 @@
+<div class="grid place-items-center h-[80vh]" *ngIf="isActive">
+    <section class="container mx-auto p-32 text-center my-4"> 
+        <h1 class="orator text-4xl">Votre résultat : {{result.score}}/5</h1>
+        <p class="courier mt-3 mb-8" [innerHtml]="result.text"></p>
+        <button (click)="goToProduct()" class="px-24 py-4 courier rounded-md primary-bg text-white text-sm font-semibold mt-2">Découvrir Younès Elab</button>
+    </section>
+</div>

@@ -1,0 +1,61 @@
+<div class="grid grid-cols-3 gap-4 h-full px-24 mt-4">
+    <div class="col-span-2 text-center"  *ngIf="isActive">
+        <div class="w-[75vh] h-[75vh] bg-black bg-cover bg-center inline-block"  [ngStyle]="{'background-image': 'url(' + product.img + ')'}"></div>
+        <section class="container mx-auto p-32 text-center my-16 mb-36" *ngIf="product.promoBloc.isActive && isActive">
+            <h1 class="orator text-3xl mb-4">{{product.promoBloc.title}}</h1>
+            <p class="courier mb-4">{{product.promoBloc.description}}</p>
+            <img class="w-96 mx-auto" [src]="product.promoBloc.img" [alt]="product.promoBloc.imgAlt">
+        </section>
+    </div>
+    <div class="relative h-auto">
+        <div class="fixed mr-24">
+            <section class="p-4 mb-8" *ngIf="isActive">
+                <h2 class="orator text-xl mb-2">{{product.name}}</h2>
+                <p class="courier text-lg mb-4">{{product.price}}€/jour</p>
+                <p class="helvetica text-sm" [innerHtml]="product.description"></p>
+                <div class="cta text-center my-4 py-2">
+                    <button class="px-12 py-4 courier rounded-md primary-bg text-white text-sm font-semibold mt-2">Voir le code source</button>
+                </div>
+                <p class="helvetica text-sm" [innerHtml]="product.additionalDetails"></p>
+            </section>
+            <section class="px-4">
+                <div id="accordion-collapse" data-accordion="collapse">
+                    <h2 id="accordion-collapse-heading-1">
+                      <button type="button" class="flex justify-between items-center p-5 pb-1 w-full font-medium text-left text-gray-500 rounded-t-xl border-b-primary" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
+                        <span class="orator text-sm">Les compétences de {{product.name}}</span>
+                        <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                      </button>
+                    </h2>
+                    <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
+                      <div class="p-5 helvetica text-sm">
+                        <div class="grid grid-cols-2 gap-4" *ngIf="isActive">
+                            <div *ngFor="let skillList of product.skills[0]; let i = index">
+                                <ul class="list-disc">
+                                    <li *ngFor="let skill of skillList">{{skill}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <h2 id="accordion-collapse-heading-2">
+                      <button type="button" class="flex justify-between items-center p-5 pb-1 w-full font-medium text-left text-gray-500 border-b-primary" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">
+                        <span class="orator text-sm">Technologies utilisées pour cette Web App</span>
+                        <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                      </button>
+                    </h2>
+                    <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
+                      <div class="p-5 helvetica text-sm">
+                        <div class="grid grid-cols-2 gap-4" *ngIf="isActive">
+                            <div *ngFor="let techList of product.usedTechs[0]; let i = index">
+                                <ul class="list-disc">
+                                    <li *ngFor="let tech of techList">{{tech}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </section>
+        </div>
+    </div>
+</div>

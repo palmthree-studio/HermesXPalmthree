@@ -1,0 +1,17 @@
+<section class="container mx-auto px-4 text-center h-[80vh] my-4"> 
+    <swiper
+    [slidesPerView]="1"
+    [spaceBetween]="50"
+    [autoplay]="true"
+    [effect]="'fade'"
+    [speed]="750"
+    class="w-[100%] h-[75%] bg-black mb-8 mx-auto relative top-4"
+    >
+        <ng-template *ngFor="let image of images" swiperSlide>
+            <div class="w-full h-full bg-cover bg-center" [ngStyle]="{'background-image': 'url(' + image.url + ')'}"></div>
+        </ng-template>
+    </swiper>
+    <h1 class="orator text-4xl">Quizz : Connaissez-vous Hermès ?</h1>
+    <p class="courier mt-1">C'est le moment de faire le test.</p>
+    <button [routerLink]="[ '/', 'quizz' ]" class="px-24 py-4 courier rounded-md primary-bg text-white text-sm font-semibold mt-2">Commencer</button>
+</section>
