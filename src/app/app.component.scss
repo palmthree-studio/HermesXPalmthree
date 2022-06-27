@@ -8,3 +8,23 @@
 .hermes-shadow {
     box-shadow: 0 8px 16px rgb(217 207 196 / 15%);
 }
+  
+.progress-min {
+    width: 15vw;
+    margin: 0 auto;
+    height: 0.5rem;
+    position: absolute;
+    margin-top: 20rem !important;
+    border: 1px solid;
+    left: 0;
+    right: 0;
+}
+
+.img-loader {
+    visibility: hidden;
+}
+
+.progress-bar.progress-bar-success {
+    background: #000;
+    height: 100%;
+}

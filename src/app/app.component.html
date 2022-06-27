@@ -4,10 +4,34 @@
     </a>
 </header>
 
-<div class="relative mt-24">
+<div class="relative mt-24" [hidden]="readyPercent < 100">
     <router-outlet></router-outlet>
 </div>
 
-<footer class="bottom-0 p-4 text-center w-full">
+<div class="relative mt-24" *ngIf="readyPercent < 100">
+    <div class="progress progress-min">
+        <div class="progress-bar progress-bar-success" role="progressbar" [attr.aria-valuenow]="readyPercent"
+        aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width' : readyPercent + '%'}">
+        </div>
+    </div>
+</div>
+
+<footer class="bottom-0 p-4 text-center w-full" *ngIf="readyPercent >= 100">
     <small>Web App created with ♡ by <a href="https://palmthree.studio">Palmthree Studio</a> </small>
 </footer>
+
+<div class="img-loader" [ngClass]="{'hidden':readyPercent >= 100}">
+    <img src="assets/img/hermes.svg" class="position-absolute" (load)="imgLoaded($event)">
+    <img src="assets/img/horses.jpeg" class="position-absolute" (load)="imgLoaded($event)">
+    <img src="assets/img/younes.jpeg" class="position-absolute" (load)="imgLoaded($event)">
+    <img src="assets/img/slide/1.webp" class="position-absolute" (load)="imgLoaded($event)">
+    <img src="assets/img/slide/2.webp" class="position-absolute" (load)="imgLoaded($event)">
+    <img src="assets/img/slide/3.webp" class="position-absolute" (load)="imgLoaded($event)">
+    <img src="assets/img/slide/4.webp" class="position-absolute" (load)="imgLoaded($event)">
+    <img src="assets/img/slide/5.webp" class="position-absolute" (load)="imgLoaded($event)">
+    <img src="assets/img/quizz/1.jpeg" class="position-absolute" (load)="imgLoaded($event)">
+    <img src="assets/img/quizz/2.jpeg" class="position-absolute" (load)="imgLoaded($event)">
+    <img src="assets/img/quizz/3.jpeg" class="position-absolute" (load)="imgLoaded($event)">
+    <img src="assets/img/quizz/4.jpeg" class="position-absolute" (load)="imgLoaded($event)">
+    <img src="assets/img/quizz/5.jpeg" class="position-absolute" (load)="imgLoaded($event)">
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataSharingService } from '../data-sharing.service';
 import { HttpService } from '../http.service';
@@ -8,7 +8,7 @@ import { HttpService } from '../http.service';
   templateUrl: './quizz.component.html',
   styleUrls: ['./quizz.component.scss']
 })
-export class QuizzComponent implements OnInit, AfterContentInit {
+export class QuizzComponent implements OnInit {
 
   questions:any = [];
   currentQuestion:number = 0;
@@ -26,21 +26,19 @@ export class QuizzComponent implements OnInit, AfterContentInit {
   ngOnInit(): void {
     // We want to have only 2 questions in advance for performance reasons. Like this, it's avoid us to request a big amount of data on start.
     // Here it's only a little amount of data, but it's cool to keep this habit. ;)
-    this.getQuestion(0);
-    console.log(this.questions);
+    this.getFirstQuestions(0,1);
   }
 
-  ngAfterContentInit(): void {
-    this.getQuestion(1);
+  getFirstQuestions(id1:number,id2:number){
+    this.questionSub = this.http.getQuestions(id1,id2).subscribe(questions =>{
+      this.questions = questions;
+      this.isActive = true;
+    })
   }
 
   getQuestion(id:number){
     this.questionSub = this.http.getQuestion(id).subscribe(question =>{
-      var res = question; 
-      this.questions.push(res);
-      JSON.stringify(this.questions);
-      console.log(this.questions);
-      this.isActive = true;
+      this.questions.push(question);
     })
   }
 
@@ -60,9 +58,6 @@ export class QuizzComponent implements OnInit, AfterContentInit {
     for (let i = 0; i < propositions.length; i++) {
       if(propositions[i].isChosen && propositions[i].isGoodAnswer){
         this.goodAnswerCount++
-        console.log("good answer", this.goodAnswerCount);
-      } else {
-        console.log("false answer");
       }
       // Next question when the loop is over
       if(i == (propositions.length - 1)){

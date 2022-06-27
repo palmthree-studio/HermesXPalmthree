@@ -26,11 +26,4 @@ export class IntroductionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSwiper([swiper]:any) {
-    console.log(swiper);
-  }
-  onSlideChange() {
-    console.log('slide change');
-  }
-
 }

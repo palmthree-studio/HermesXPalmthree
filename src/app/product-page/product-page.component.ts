@@ -23,14 +23,13 @@ export class ProductPageComponent implements OnInit {
       this.product = product;
       this.cd.detectChanges();
       this.initSkills();
-      console.log(this.product);
     })
   }
 
   initSkills(){
     this.product.skills = this.myFilter(this.product.skills);
     this.product.usedTechs = this.myFilter(this.product.usedTechs);
-    console.log(this.product.skills,this.product.usedTechs);
+    console.log(this.product);
     this.isActive = true;
     this.skillsReady = true;
     this.cd.detectChanges();
