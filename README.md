@@ -1,4 +1,4 @@
-# Hermès/Capgemini X Palmthree Studio
+# Hermès/Capgemini X Palmthree Studio / Client side
 
 A little quizz about Hermès, client side !
 
